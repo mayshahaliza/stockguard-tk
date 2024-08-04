@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+            integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <object th:include="~{fragments/common :: js}" th:remove="tag"></object>
+    <object th:include="~{fragments/common :: css}" th:remove="tag"></object>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .card-container {
+            margin: auto;
+            width: 80%;
+            padding: 20px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #eeeeef;
+            color: #3c6142;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+        .center-button {
+            display: flex;
+            justify-content: center;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+
+        /* body {
+            font-family: 'Poppins', sans-serif;
+        } */
+
+        .left-top-corner {
+            position: absolute;
+            top: 12%;
+            left: 5%;
+        }
+
+        .left-top-corner .btn-back {
+            background-color: #f8f9fa; 
+            color: #3c6142; 
+            padding: 8px 12px; 
+            border-radius: 5px; 
+            text-decoration: none; 
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .left-top-corner .btn-back:hover {
+            background-color: #f8f9fa; 
+            color: #eeeeef; 
+        }
+
+        .navbar {
+            margin-bottom: 20px; /* Navbar height, to prevent overlap with buttons above */
+        }
+
+        .btn-submit {
+            background-color: #3c6142;
+            color: #ffffff;
+            border-color: #3c6142;
+            padding: 10px 30px;
+            margin-right: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: #525663;
+            color: #ffffff;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            padding: 10px 30px;
+            margin-left: 10px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6867;
+            border-color: #5a6865;
+        }
+    </style>
+</head>
+<body>
+<nav th:replace="~{fragments/admin_navbar :: admin_navbar}"></nav>
+
+<div class="card-container layout_padding-top layout_padding-bottom layout_margin-top layout_margin-bottom">
+    <div class="text-center" th:if="${user.role == 'admin'}"> </div>
+    <div class="card">
+        <div class="card-header text-center fw-bold" style="background-color: #eeeeef; color: #3c6142;">
+            <h2 style="font-weight: bold;">Update</h2>
+        </div>
+        <div class="card-body">
+            <form th:action="@{'/category/update/'} + ${category.category_id}" th:object="${category}" method="POST">
+                <div class="d-flex justify-content-center">
+                    <!-- <small th:if="${duplicateError}" class="alert alert-danger" th:text="${duplicateError}"></small> -->
+                </div>
+                <div class="form-group">
+                    <label for="category_id" class="form-label">ID</label>
+                    <input required class="form-control" type="text" name="category_id" th:value="*{category_id}"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label for="categoryName" class="form-label">Category Name<span style="color: red;">*</span></label> </label>
+                    <input type="text" th:field = "*{categoryName}"  class="form-control" id="categoryName">
+                </div>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-submit" style="background-color: #3c6142; color: #ffffff;">Submit</button>
+                    <a href="/category" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div th:unless="${user.role =='admin'}">
+    <script th:inline="javascript">
+            /*<![CDATA[*/
+            window.location.replace('/no-access');
+            /*]]>*/
+    </script>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-4+qn4Xqf8T5ywBgeA2zKkqG0TVveK/JJfDwrOQ1QhoKqIbcoO8eP1iFs2x7p8jq1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+UAQlFeJK6ZKN1L4y47pDf8xF9+Qz9v5CGI9xgndbcgyksW2JWBUX2+nXk" crossorigin="anonymous"></script>
+</body>
+</html>

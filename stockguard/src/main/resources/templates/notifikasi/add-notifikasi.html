@@ -34,7 +34,7 @@
 
         .card-header {
             background-color: #eeeeef;
-            color: #3c3f61;
+            color: #3c6142 !important;
         }
 
         .card-body {
@@ -48,13 +48,28 @@
           margin-bottom: 1.5rem;
         }
         .btn-submit {
-            background-color: #3c3f61; /* Change button color */
-            color: #fff;
-            /* font-weight: bold; */
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            border: none;
-            transition: background-color 0.3s ease;
+            background-color: #3c6142;
+            color: #ffffff;
+            border-color: #3c6142;
+            padding: 10px 30px;
+            margin-right: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: #525663;
+            color: #ffffff;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            padding: 10px 30px;
+            margin-left: 10px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6867;
+            border-color: #5a6865;
         }
         .layout_padding {
             padding: 30px 0;
@@ -112,7 +127,7 @@
     <div class="card-container layout_padding-top layout_padding-bottom layout_margin-top layout_margin-bottom">
 
         <div class="card">
-            <div class="card-header text-center fw-bold" style="background-color: #eeeeef; color:#3c3f61">
+            <div class="card-header text-center fw-bold" style="background-color: #eeeeef; color:#3c6142">
                 <h2 style="font-weight: bold;"> New Notification</h2>
             </div>
             <div class="card-body">
@@ -141,8 +156,9 @@
                             <option th:each="msg : ${messages}" th:value="${msg}" th:text="${msg}">Message</option>
                         </select>
                     </div>
-                    <div class="center-button">
-                        <button class="btn btn-submit" type="submit">Submit</button>
+                    <div class="text-right center-button">
+                        <button type="submit" class="btn btn-submit" style="background-color: #3c6142; color: #ffffff;">Submit</button>
+                        <a href="/notifikasi" class="btn btn-secondary">Cancel</a>
                     </div>
                 </form>
             </div>

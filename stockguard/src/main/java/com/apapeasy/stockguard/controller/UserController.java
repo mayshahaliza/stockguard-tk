@@ -174,7 +174,7 @@ public class UserController {
         userService.registerUser(userRegister);
 
         //Redirect ke Home
-        return "redirect:/";
+        return "user/add-user";
     }
 
     @GetMapping("/user/viewall")

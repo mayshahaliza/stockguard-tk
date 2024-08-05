@@ -279,9 +279,15 @@
                                     <td th:text="${user.role}"></td>
                                     <td th:text="${user.email}"></td>
                                     <td>
-                                        <a th:href="@{/user/update/{username}(username=${user.username})}" class="btn btn-submit"><i
-                                            class="fas fa-edit"></i>
+<!--                                        <a th:href="@{/user/update/{username}(username=${user.username})}" class="btn btn-submit"><i-->
+<!--                                            class="fas fa-edit"></i>-->
+<!--                                        </a>-->
+                                        <a type="button" class="btn btn-md btn-detail"
+                                           th:href="@{'/user/update/' + ${user.username}}"><i class="fas fa-edit"></i>
                                         </a>
+<!--                                        <a type="button" class="btn btn-md btn-detail"-->
+<!--                                           th:href="@{/category/update/} + ${category.category_id}"><i class="fas fa-edit"></i>-->
+<!--                                        </a>-->
                                         <a th:href="@{'/user/delete/' + ${user.username}}" class="btn btn-danger btn-sm"  onclick="return confirmDelete()">
                                             <i class="fas fa-trash-alt"></i>
                                         </a>

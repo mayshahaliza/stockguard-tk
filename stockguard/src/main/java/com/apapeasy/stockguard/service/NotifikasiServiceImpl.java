@@ -1,5 +1,7 @@
 package com.apapeasy.stockguard.service;
 
+import com.apapeasy.stockguard.model.Category;
+import com.apapeasy.stockguard.model.Item;
 import com.apapeasy.stockguard.model.Notifikasi;
 import com.apapeasy.stockguard.repository.NotifikasiDb;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,4 +20,9 @@ public class NotifikasiServiceImpl implements NotifikasiService {
     public List<Notifikasi> getAllNotifikasi(){
         return notifikasiDb.findAll();
     }
+
+//    public void deleteNotifikasi(Item item) {
+//        categoryDb.delete(category);
+//    }
+
 }

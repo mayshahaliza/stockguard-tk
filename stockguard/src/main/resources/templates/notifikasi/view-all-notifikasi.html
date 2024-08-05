@@ -38,7 +38,7 @@
 
         .card-header {
             background-color: #eeeeef;
-            color: #3c3f61;
+            color: #3c6142 !important;
         }
 
         .card-body {
@@ -167,13 +167,13 @@
 <div th:if="${user.role == 'storemanager' || user.role == 'warehousemanager'}">
     <div class="card-container layout_padding-top layout_padding-bottom layout_margin-top layout_margin-bottom">
         <div class="card">
-            <div class="card-header text-center fw-bold">
-                <h2>Notifications</h2>
+            <div class="card-header text-center fw-bold" style="background-color: #eeeeef; color:#3c6142">
+                <h2 style="color: #3c6142;">Notifications</h2>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="myTable" class="table table-striped table-bordered notifikasi-table">
-                        <thead class="card-header text-center fw-bold" style="background-color: #3c3f61; color: #FFFFFF;">
+                        <thead class="card-header text-center fw-bold" style="background-color: #3c6142; color: #FFFFFF;">
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Notification Date</th>

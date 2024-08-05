@@ -3,10 +3,12 @@ package com.apapeasy.stockguard.controller;
 import com.apapeasy.stockguard.dto.CreateItemRequestDTO;
 import com.apapeasy.stockguard.model.Category;
 import com.apapeasy.stockguard.model.Item;
+import com.apapeasy.stockguard.model.Notifikasi;
 import com.apapeasy.stockguard.model.User;
 import com.apapeasy.stockguard.dto.ItemMapper;
 import com.apapeasy.stockguard.dto.UpdateItemRequestDTO;
 import com.apapeasy.stockguard.repository.ItemDb;
+import com.apapeasy.stockguard.repository.NotifikasiDb;
 import com.apapeasy.stockguard.service.AuthenticationService;
 import com.apapeasy.stockguard.service.CategoryService;
 import com.apapeasy.stockguard.service.ItemService;
@@ -15,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -31,6 +35,9 @@ public class ItemController {
 
     @Autowired
     ItemDb itemRepository;
+
+    @Autowired
+    NotifikasiDb notifikasiDb;
 
     @Autowired
     private ItemMapper itemMapper;
@@ -104,6 +111,14 @@ public class ItemController {
         var itemFromDto = itemMapper.updateItemRequestDTOToItem(itemDTO);
         var item = itemService.updateItem(itemFromDto);
         model.addAttribute("itemId", item.getItemId());
+
+        if(item.getStatus().equals(0)){
+            for(Notifikasi notif : notifikasiDb.findAll()){
+                if(notif.getItem()==item){
+                    notifikasiDb.delete(notif);
+                }
+            }
+        }
 
         //Autentikasi
         User loggedInUser = authenticationService.getLoggedInUser();

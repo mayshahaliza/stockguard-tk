@@ -192,8 +192,6 @@
                     <div class="d-flex justify-content-end align-items-center mb-3">
                         <!-- Button : Add Item -->
                         <a type="button" class="btn mt-4 btn-add" href="/item/add">Add Item</a>
-                        <!-- Button : Items Close to Expiration -->
-                        <!--                    <a type="button" class="btn mt-4 ml-2 btn-warning" href="/item/view-close-to-expiration">Items Close to Expiration</a>-->
                     </div>
                     <div class="table-responsive">
                         <table id="myTable" class="table table-striped table-bordered item-table">
@@ -221,13 +219,7 @@
                                 <td th:text="${item.status} ? 'Close to Expiration' : 'Far Away'"></td>
                                 <td style="text-align: center;">
                                     <a type="button" class="btn btn-md btn-detail" th:href="@{'/item/detail/' + ${item.itemId}}">Detail</a>
-                                    <!--                                <a type="button" class="btn btn-md btn-detail"-->
-                                    <!--                                   th:href="@{/item/update/ } + ${item.itemId}"><i class="fas fa-edit"></i></a>-->
                                 </td>
-                                <!--                            <td>-->
-                                <!--                                <span th:text="${pesanan.statusPesanan}"-->
-                                <!--                                      th:class="${pesanan.statusPesanan == 'Canceled' ? 'text-danger' : (pesanan.statusPesanan == 'Complete' ? 'text-success' : 'text-dark')}"></span>-->
-                                <!--                            </td>-->
                             </tr>
                             </tbody>
                         </table>

@@ -1,12 +1,10 @@
 package com.apapeasy.stockguard.service;
 
 import com.apapeasy.stockguard.model.Category;
-import com.apapeasy.stockguard.model.User;
 import com.apapeasy.stockguard.repository.CategoryDb;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

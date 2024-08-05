@@ -3,16 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
-          integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <object th:include="~{fragments/common :: js}" th:remove="tag"></object>
   <object th:include="~{fragments/common :: css}" th:remove="tag"></object>
-  <!-- Add your custom styles here -->
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -20,16 +14,15 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-attachment: fixed; /* Optional: makes the background fixed when scrolling */
+      background-attachment: fixed;
     }
 
     .card {
-      max-width: 600px; /* Adjust width as needed */
-      margin: 0 auto; /* Center the card horizontally */
+      max-width: 600px;
+      margin: 0 auto;
       border-radius: 1rem;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background for better readability */
-
+      background-color: rgba(255, 255, 255, 0.8);
     }
 
     .card-body {
@@ -41,7 +34,7 @@
     }
 
     .btn-submit {
-      background-color: #65a17c; /* Change button color */
+      background-color: #65a17c;
       color: #fff;
       font-weight: bold;
       padding: 0.75rem 1.5rem;
@@ -51,23 +44,12 @@
     }
 
     .btn-submit:hover {
-      background-color: #3c6142; /* Change button hover color */
-    }
-
-    .forgot-password {
-      font-size: 0.875rem;
-      color: #6c7d71;
-    }
-
-    .register-link {
-      color: #ff19c9;
-      font-weight: bold;
+      background-color: #3c6142;
     }
   </style>
 </head>
 <body>
 <div th:replace="~{fragments/guest_navbar :: guest_navbar}"></div>
-
 <div class="container py-5">
   <div class="row d-flex justify-content-center align-items-center">
     <div class="col-md-6">
@@ -81,12 +63,14 @@
                   <input type="text" th:field="*{username}" class="form-control" id="formUsername" placeholder="Enter your username">
                   <small th:if="${#fields.hasErrors('username')}" class="text-danger" th:errors="*{username}"></small>
                 </div>
+
                 <div class="form-group">
                   <label for="formPassword" class="form-label">Password</label>
                   <input type="password" th:field="*{password}" class="form-control" id="formPassword" placeholder="Enter your password">
                   <small th:if="${#fields.hasErrors('password')}" class="text-danger" th:errors="*{password}"></small>
                 </div>
 
+                <!-- If username or password is invalid -->
                 <div class="d-flex justify-content-center">
                   <small th:if="${error}" class="alert alert-danger" role="alert" th:text="${error}"></small>
                 </div>

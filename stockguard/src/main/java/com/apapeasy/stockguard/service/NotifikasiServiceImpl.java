@@ -4,7 +4,6 @@ import com.apapeasy.stockguard.model.Notifikasi;
 import com.apapeasy.stockguard.repository.NotifikasiDb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

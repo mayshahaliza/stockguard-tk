@@ -2,9 +2,7 @@ package com.apapeasy.stockguard.service;
 
 import com.apapeasy.stockguard.model.User;
 import com.apapeasy.stockguard.repository.UserDb;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +15,11 @@ public class UserService {
         userDb.save(user);
     }
 
-    public boolean existsByUsername(String username) {
+    public Boolean existsByUsername(String username) {
         return userDb.existsByUsername(username);
     }
 
-    public boolean existsByEmail(String email) {
+    public Boolean existsByEmail(String email) {
         return userDb.existsByEmail(email);
     }
 
@@ -29,13 +27,11 @@ public class UserService {
         return userDb.findAll();
     }
 
-    // Method untuk Form Update User
     public User updateUser(User user) {
         userDb.save(user);
         return user;
     }
 
-    // Method untuk Form Delete User
     public void deleteUser(User user) {
         userDb.delete(user);
     }

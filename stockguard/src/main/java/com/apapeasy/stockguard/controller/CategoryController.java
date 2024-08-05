@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.util.List;
 
 @Controller
@@ -33,6 +32,8 @@ public class CategoryController {
     public String viewAllCategory(Model model){
         List<Category> listCategory = categoryService.getAllCategory();
         model.addAttribute("listCategory", listCategory);
+
+        //Autentikasi
         User loggedInUser = authenticationService.getLoggedInUser();
         model.addAttribute("user", loggedInUser);
 
@@ -43,8 +44,11 @@ public class CategoryController {
     public String addCategory(Model model){
         CategoryRequestDTO dto = new CategoryRequestDTO();
         model.addAttribute("dto", dto);
+
+        //Autentikasi
         User loggedInUser = authenticationService.getLoggedInUser();
         model.addAttribute("user", loggedInUser);
+
         return "category/form-add-category";
     }
 
@@ -52,19 +56,20 @@ public class CategoryController {
     public String addCategorySubmit(@ModelAttribute Category category, Model model){
         categoryService.addCategory(category);
         model.addAttribute("category_id", category.getCategory_id());
+
+        //Autentikasi
         User loggedInUser = authenticationService.getLoggedInUser();
         model.addAttribute("user", loggedInUser);
+
         return "category/add-category";
     }
 
     @GetMapping("/category/update/{id}")
     public String formUpdateCategory(@PathVariable("id") Integer id, Model model) {
         Category category = categoryService.getCategoryById(id);
-        //var productDTO = productMapper.productToUpdateProductRequestDTO(product);
-
         model.addAttribute("category", category);
 
-        // Autentikasi
+        //Autentikasi
         User loggedInUser = authenticationService.getLoggedInUser();
         model.addAttribute("user", loggedInUser);
 
@@ -76,8 +81,10 @@ public class CategoryController {
         Category updateCategory = categoryService.updateCategory(category);
         model.addAttribute("category_id", updateCategory.getCategory_id());
 
+        //Autentikasi
         User loggedInUser = authenticationService.getLoggedInUser();
         model.addAttribute("user", loggedInUser);
+
         return "category/success-update-category";
     }
 
@@ -86,13 +93,11 @@ public class CategoryController {
         Category category = categoryService.getCategoryById(id);   
         categoryService.deleteCategory(category);
 
+        //Autentikasi
         User loggedInUser = authenticationService.getLoggedInUser();
         model.addAttribute("user", loggedInUser);
 
-        //model.addAttribute("user_id", klien.getNamaKlien()); 
         redirectAttributes.addFlashAttribute("successMessage", "Category deleted successfully.");
         return "redirect:/category";
     }
-
-    //<div th:if="${user.role == 'executive' || user.role =='admin'}">
 }

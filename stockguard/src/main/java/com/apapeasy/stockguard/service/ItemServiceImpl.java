@@ -1,13 +1,10 @@
 package com.apapeasy.stockguard.service;
 
 import com.apapeasy.stockguard.model.Item;
-
 import com.apapeasy.stockguard.repository.ItemDb;
 import jakarta.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,20 +16,6 @@ public class ItemServiceImpl implements ItemService {
     private ItemDb itemDb;
 
     public List<Item> getAllItem(){
-        // List<Item> itemList = itemDb.findAll();
-        // LocalDate today = LocalDate.now();
-        // LocalDate nextWeek = today.plusDays(7);
-
-        // for(Item item:itemList){
-        //     if(item.getTanggalKadaluwarsa().isAfter(today.minusDays(1)) && item.getTanggalKadaluwarsa().isBefore(nextWeek)){
-        //         item.setStatus(1);
-        //         itemDb.save(item);
-        //     }
-        //     else{
-        //         item.setStatus(0);
-        //         itemDb.save(item);
-        //     }
-        // }
         return itemDb.findAll();
     }
 
@@ -46,12 +29,14 @@ public class ItemServiceImpl implements ItemService {
         else{
             item.setStatus(0);
         }
+
         itemDb.save(item);
     }
 
     public Item updateItem(Item item) {
         LocalDate today = LocalDate.now();
         LocalDate nextWeek = today.plusDays(7);
+
         if(item.getTanggalKadaluwarsa().isAfter(today.minusDays(1)) && item.getTanggalKadaluwarsa().isBefore(nextWeek)){
             item.setStatus(1);
         }

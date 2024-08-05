@@ -37,13 +37,10 @@ public class StockguardApplication {
 
 				var warehouse = new User();
 				warehouse.setEmail("warehouse@gmail.com");
-				warehouse.setRole("warehouse");
+				warehouse.setRole("warehousemanager");
 				warehouse.setPassword("waremgr123");
 				warehouse.setUsername("warehouse");
 				userService.registerUser(warehouse);
-
-
-
 			}
 		};
 	}

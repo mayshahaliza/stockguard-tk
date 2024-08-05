@@ -6,10 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import java.time.LocalDate;
 import java.util.List;
-
-import org.hibernate.annotations.SQLDelete;
 
 @Getter
 @Setter

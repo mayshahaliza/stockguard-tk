@@ -5,15 +5,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employee List</title>
+
+    <!-- CSS Links -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- JS Links -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <!-- Thymeleaf Fragments -->
     <object th:include="~{fragments/common :: js}" th:remove="tag"></object>
     <object th:include="~{fragments/common :: css}" th:remove="tag"></object>
     <style>
@@ -208,10 +214,6 @@
             color: #fff;
 
         }
-        
-
-
-
     </style>
 </head>
 
@@ -231,7 +233,7 @@
             </div>
             <div class="card-body">
                 <div class="row align-items-start mb-4">
-                    <!-- Search and Filter Form -->
+
                    <!-- Search and Filter Form -->
                     <form th:action="@{/user/viewall}" method="get" class="row align-items-start mb-4">
                         <!-- Filter Form -->
@@ -247,17 +249,9 @@
                                 <div class="col-md-4 mb-3 d-flex align-items-end justify-content-between">
                                     <!-- Submit Button -->
                                     <button type="submit" class="btn btn-search">Search</button>
-                                    <!-- Reset Button -->
-                                    <!-- <a href="#" onclick="resetFilters()" class="btn btn-link-secondary text-decoration-none">
-                                        <i class="fa fa-undo"></i> Reset
-                                    </a> -->
                                 </div>
                             </div>
                         </div>
-                        <!-- Button Container -->
-                        <!-- <div class="col-md-4 mb-3 d-flex align-items-end justify-content-between">
-                            <button type="submit" class="btn btn-search">Search</button>
-                        </div> -->
                     </form>
                     <div class="d-flex justify-content-end align-items-center mb-3">
                         <a type="button" class="btn mt-4 btn-addUser" href="/register">Add User</a>
@@ -349,7 +343,5 @@
             }
         }
     </script>
-
 </body>
-
 </html>

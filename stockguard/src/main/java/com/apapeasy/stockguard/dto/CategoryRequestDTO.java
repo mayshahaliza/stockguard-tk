@@ -1,8 +1,8 @@
 package com.apapeasy.stockguard.dto;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -13,5 +13,4 @@ public class CategoryRequestDTO {
     @NotNull
     private String categoryName;
 
-    //relation ke barang
 }
